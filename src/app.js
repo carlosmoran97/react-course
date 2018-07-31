@@ -22,18 +22,22 @@ const removeAll = () => {
     renderApp();
 };
 
+const makeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length);
+    alert(app.options[randomNum]);
+};
+
 const renderApp = () => {
     const template = (
         <div>
             <h1>{app.title}</h1>
             {app.subtitle&&<p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
-            <p>{app.options.length}</p>
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-            </ol>
+            <button disabled={app.options.length === 0} onClick={makeDecision}>What should I do?</button>
             <button onClick={removeAll}>Remove all</button>
+            <ol>
+                {app.options.map((option, index) => <li key={index}>{option}</li> )}
+            </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add Option</button>
