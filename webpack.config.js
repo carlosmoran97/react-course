@@ -25,6 +25,11 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: base
+        contentBase: base,
+        allowedHosts:[
+            'localhost',
+            '127.0.0.1',
+            '192.168.1.8'
+        ]
     }
 };
